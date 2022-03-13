@@ -1,0 +1,2935 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <style>dfn{cursor:pointer}
+    .dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font:small Helvetica Neue,sans-serif,Droid Sans Fallback;background:#fff;color:#000;box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);border-radius:2px}
+    .dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+    .dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;top:0}
+    .dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1}
+    .dfn-panel *{margin:0}
+    .dfn-panel b{display:block;color:#000;margin-top:.25em}
+    .dfn-panel ul a[href]{color:#333}
+    .dfn-panel>div{display:flex}
+    .dfn-panel a.self-link{font-weight:700;margin-right:auto}
+    .dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+    .dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+    .dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+    .dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+    .dfn-panel a[href]:hover{border-bottom-width:1px}
+    .dfn-panel ul{padding:0}
+    .dfn-panel li{margin-left:1em}
+    .dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+  </style>
+  <link rel="preconnect" crossorigin="anonymous" href="https://www.w3.org/" class="removeOnSave">
+  <link rel="preload" as="script" href="./apn_files/fixup.js.transferir" class="removeOnSave">
+  <link rel="preload" as="style" href="./apn_files/base.css" class="removeOnSave">
+  <link rel="stylesheet" href="./apn_files/base.css" class="removeOnSave">
+  
+  <title>Ontology for the Annotation of Push-Notifications</title>		
+	
+	<link rel="stylesheet" href="./apn_files/localstyle.css">
+	<script src="./apn_files/jquery.min.js.transferir" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+		
+	<style id="respec-ui-styles" class="removeOnSave">
+    .respec-modal .close-button{position:absolute;z-index:inherit;padding:.2em;font-weight:700;cursor:pointer;margin-left:5px;border:none;background:0 0}
+    #respec-ui{position:fixed;display:flex;flex-direction:row-reverse;top:20px;right:20px;width:202px;text-align:right;z-index:9000}
+    #respec-pill,.respec-info-button{background:#fff;height:2.5em;color:#787878;border:1px solid #ccc;box-shadow:1px 1px 8px 0 rgba(100,100,100,.5)}
+    .respec-info-button{border:none;opacity:.75;border-radius:2em;margin-right:1em;min-width:3.5em}
+    .respec-info-button:focus,.respec-info-button:hover{opacity:1;transition:opacity .2s}
+    #respec-pill:disabled{font-size:2.8px;text-indent:-9999em;border-top:1.1em solid rgba(40,40,40,.2);border-right:1.1em solid rgba(40,40,40,.2);border-bottom:1.1em solid rgba(40,40,40,.2);border-left:1.1em solid #fff;transform:translateZ(0);animation:respec-spin .5s infinite linear;box-shadow:none}
+    #respec-pill:disabled,#respec-pill:disabled:after{border-radius:50%;width:10em;height:10em}
+    @keyframes respec-spin{
+    0%{transform:rotate(0)}
+    100%{transform:rotate(360deg)}
+    }
+    .respec-hidden{visibility:hidden;opacity:0;transition:visibility 0s .2s,opacity .2s linear}
+    .respec-visible{visibility:visible;opacity:1;transition:opacity .2s linear}
+    #respec-pill:focus,#respec-pill:hover{color:#000;background-color:#f5f5f5;transition:color .2s}
+    #respec-menu{position:absolute;margin:0;padding:0;font-family:sans-serif;background:#fff;box-shadow:1px 1px 8px 0 rgba(100,100,100,.5);width:200px;display:none;text-align:left;margin-top:32px;font-size:.8em}
+    #respec-menu:not([hidden]){display:block}
+    #respec-menu li{list-style-type:none;margin:0;padding:0}
+    .respec-save-buttons{display:grid;grid-template-columns:repeat(auto-fill,minmax(47%,2fr));grid-gap:.5cm;padding:.5cm}
+    .respec-save-button:link{padding-top:16px;color:#f0f0f0;background:#2a5aa8;justify-self:stretch;height:1cm;text-decoration:none;text-align:center;font-size:inherit;border:none;border-radius:.2cm}
+    .respec-save-button:link:hover{color:#fff;background:#2a5aa8;padding:0;margin:0;border:0;padding-top:16px}
+    .respec-save-button:link:focus{background:#193766}
+    #respec-pill:focus,#respec-ui button:focus,.respec-option:focus{outline:0;outline-style:none}
+    #respec-pill-error{background-color:red;color:#fff}
+    #respec-pill-warning{background-color:orange;color:#fff}
+    .respec-error-list,.respec-warning-list{margin:0;padding:0;list-style:none;font-family:sans-serif;background-color:#fffbe6;font-size:.85em}
+    .respec-error-list>li,.respec-warning-list>li{padding:.4em .7em}
+    .respec-warning-list>li::before{content:"⚠️";padding-right:.5em}
+    .respec-error-list p,.respec-warning-list p{padding:0;margin:0}
+    .respec-warning-list li{color:#5c3b00;border-bottom:thin solid #fff5c2}
+    .respec-error-list,.respec-error-list li{background-color:#fff0f0}
+    .respec-error-list li::before{content:"💥";padding-right:.5em}
+    .respec-error-list li{padding:.4em .7em;color:#5c3b00;border-bottom:thin solid #ffd7d7}
+    .respec-error-list li>p{margin:0;padding:0;display:inline-block}
+    .respec-error-list li>p:first-child,.respec-warning-list li>p:first-child{display:inline}
+    .respec-error-list>li li,.respec-warning-list>li li{margin:0;list-style:disc}
+    #respec-overlay{display:block;position:fixed;z-index:10000;top:0;left:0;height:100%;width:100%;background:#000}
+    .respec-show-overlay{transition:opacity .2s linear;opacity:.5}
+    .respec-hide-overlay{transition:opacity .2s linear;opacity:0}
+    .respec-modal{display:block;position:fixed;z-index:11000;margin:auto;top:10%;background:#fff;border:5px solid #666;min-width:20%;width:79%;padding:0;max-height:80%;overflow-y:auto;margin:0 -.5cm}
+    @media screen and (min-width:78em){
+    .respec-modal{width:62%}
+    }
+    .respec-modal h3{margin:0;padding:.2em;text-align:center;color:#000;background:linear-gradient(to bottom,#eee 0,#eee 50%,#ccc 100%);font-size:1em}
+    .respec-modal .inside div p{padding-left:1cm}
+    #respec-menu button.respec-option{background:#fff;padding:0 .2cm;border:none;width:100%;text-align:left;font-size:inherit;padding:1.2em 1.2em}
+    #respec-menu button.respec-option:hover,#respec-menu button:focus{background-color:#eee}
+    .respec-cmd-icon{padding-right:.5em}
+    #respec-ui button.respec-option:last-child{border:none;border-radius:inherit}
+    .respec-button-copy-paste{position:absolute;height:28px;width:40px;cursor:pointer;background-image:linear-gradient(#fcfcfc,#eee);border:1px solid #90b8de;border-left:0;border-radius:0 0 3px 0;-webkit-user-select:none;user-select:none;-webkit-appearance:none;top:0;left:127px}
+    @media print{
+    #respec-ui{display:none}
+    }
+    .respec-iframe{width:100%;min-height:550px;height:100%;overflow:hidden;padding:0;margin:0;border:0}
+    .respec-iframe:not(.ready){background:url(https://respec.org/xref/loader.gif) no-repeat center}
+    .respec-iframe+a[href]{font-size:.9rem;float:right;margin:0 .5em .5em;border-bottom-width:1px}</style><style id="respec-mainstyle">@keyframes pop{
+    0%{transform:scale(1,1)}
+    25%{transform:scale(1.25,1.25);opacity:.75}
+    100%{transform:scale(1,1)}
+    }
+    .hljs{background:0 0!important}
+    a abbr,h1 abbr,h2 abbr,h3 abbr,h4 abbr,h5 abbr,h6 abbr{border:none}
+    dfn{font-weight:700}
+    a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+    a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+    a.bibref{text-decoration:none}
+    .respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+    .respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+    @supports not (text-decoration:red wavy underline){
+    .respec-offending-element:not(pre){display:inline-block}
+    .respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+    }
+    #references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+    cite .bibref{font-style:normal}
+    code{color:#c63501}
+    th code{color:inherit}
+    .tab{padding-left:3em}
+    a[href].orcid{padding-left:4px;padding-right:4px}
+    a[href].orcid>svg{margin-bottom:-2px}
+    .toc a,.tof a{text-decoration:none}
+    a .figno,a .secno{color:#000}
+    ol.tof,ul.tof{list-style:none outside none}
+    .caption{margin-top:.5em;font-style:italic}
+    table.simple{border-spacing:0;border-collapse:collapse;border-bottom:3px solid #005a9c}
+    .simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+    .simple th a{color:#fff;padding:3px 5px;text-align:left}
+    .simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+    .simple td{padding:3px 10px;border-top:1px solid #ddd}
+    .simple tr:nth-child(even){background:#f0f6ff}
+    .section dd>p:first-child{margin-top:0}
+    .section dd>p:last-child{margin-bottom:0}
+    .section dd{margin-bottom:1em}
+    .section dl.attrs dd,.section dl.eldef dd{margin-bottom:0}
+    #issue-summary>ul{column-count:2}
+    #issue-summary li{list-style:none;display:inline-block}
+    details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+    details.respec-tests-details>*{padding-right:2em}
+    details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+    details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+    details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+    details.respec-tests-details>li{padding-left:1em}
+    a[href].self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+    h2,h3,h4,h5,h6{position:relative}
+    aside.example .marker>a.self-link{color:inherit}
+    h2>a.self-link,h3>a.self-link,h4>a.self-link,h5>a.self-link,h6>a.self-link{border:none;color:inherit;font-size:83%;height:2em;left:-1.6em;opacity:.5;position:absolute;text-align:center;text-decoration:none;top:0;transition:opacity .2s;width:2em}
+    h2>a.self-link::before,h3>a.self-link::before,h4>a.self-link::before,h5>a.self-link::before,h6>a.self-link::before{content:"§";display:block}
+    @media (max-width:767px){
+    dd{margin-left:0}
+    h2>a.self-link,h3>a.self-link,h4>a.self-link,h5>a.self-link,h6>a.self-link{left:auto;top:auto}
+    }
+    @media print{
+    .removeOnSave{display:none}
+    }</style><link rel="dns-prefetch" crossorigin="anonymous" href="https://api.specref.org/" class="removeOnSave"><link rel="preconnect" crossorigin="anonymous" href="https://respec.org/" class="removeOnSave"><link rel="preload" as="script" href="https://www.w3.org/Tools/respec/respec-highlight" class="removeOnSave"><link rel="stylesheet" href="./apn_files/cg-draft"><meta name="description" content=""><style>.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}
+    .hljs-comment,.hljs-quote{color:#717277;font-style:italic}
+    .hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4}
+    .hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#ca4706;font-weight:700}
+    .hljs-literal{color:#0b76c5}
+    .hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#42803c}
+    .hljs-built_in,.hljs-class .hljs-title{color:#9a6a01}
+    .hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801}
+    .hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#336ae3}
+    .hljs-emphasis{font-style:italic}
+    .hljs-strong{font-weight:700}
+    .hljs-link{text-decoration:underline}</style><style class="removeOnSave">var:hover{text-decoration:underline;cursor:pointer}
+    var.respec-hl{color:var(--color,#000);background-color:var(--bg-color);box-shadow:0 0 0 2px var(--bg-color)}
+    var.respec-hl-c1{--bg-color:#f4d200}
+    var.respec-hl-c2{--bg-color:#ff87a2}
+    var.respec-hl-c3{--bg-color:#96e885}
+    var.respec-hl-c4{--bg-color:#3eeed2}
+    var.respec-hl-c5{--bg-color:#eacfb6}
+    var.respec-hl-c6{--bg-color:#82ddff}
+    var.respec-hl-c7{--bg-color:#ffbcf2}
+    @media print{
+    var.respec-hl{background:0 0;color:#000;box-shadow:unset}}
+  </style>
+  <style>
+    var{position:relative;cursor:pointer}
+    var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
+    var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#000}
+    var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#000;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
+    var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
+  </style><!-- Support ReSpec's development - https://opencollective.com/respec -->
+  <meta name="monetization" class="removeOnSave" content="$ilp.uphold.com/DwJmxPHHi8K3">
+</head>
+<body class="h-entry informative toc-sidebar">
+  <p id="toc-nav">
+    <a id="toc-jump" href="https://bcat65811.github.io/apn.html#toc">
+      <span aria-hidden="true">↑</span> <span>Jump to Table of Contents</span>
+    </a>
+    <a id="toc-toggle" href="https://bcat65811.github.io/apn.html#toc">
+      <span aria-hidden="true">←</span> <span>Collapse Sidebar</span>
+    </a>
+  </p>
+  <div class="head">
+    <h1 id="title" class="title">Ontology for the Annotation of Push-Notifications</h1>
+    <h2>
+      Release
+      <time class="dt-published" datetime="2022-02-16">16 February 2022</time>
+    </h2>
+    <b>Version:</b> 0.1
+    <dl>
+      <dt>Latest editor's draft:</dt>
+      <dd>
+        <a href="https://w3id.org/apn/">https://w3id.org/apn/</a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Download serialization:</dt>
+      <dd>
+        <span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL"></a></span>
+        <span><a href="ontology.json" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD"></a></span>
+        <span><a href="ontology.rdf" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML"></a></span>
+        <span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples"></a></span>
+        <span><a href="ontology.n3" target="_blank"><img src="https://img.shields.io/badge/Format-N3-blue.svg" alt="N3"></a></span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>License:</dt>
+      <dd>
+        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+          <img src="https://img.shields.io/badge/License-http://purl.org/NET/rdflicense/cc_by4.0-blue.svg" alt="CC-BY 4.0">
+        </a>
+      </dd>
+    </dl>
+    <dl>
+      <dt>Cite as:</dt>
+      <dd>
+      </dd>
+    </dl>
+    <hr title="Separator for header">
+  </div>
+  <section id="abstract" class="introductory"><h2>Abstract</h2>
+    <p>
+      The ontology for the Annotation of Push-Notifications (APN) aims to provide a tool that can be used to 
+      model different aspects of push-notifications, i.e., communication tools used by apps and services to 
+      disseminate information, engage with their users and encourage users to take particular actions.
+      The scope of this ontology is limited to the definition of a set of parameters 
+      that can be used to classify push-notification data, in particular its text content, 
+      with the end goal of creating a service which pushes more empathetic content to 
+      push-notification subscribers.
+    </p>
+  </section>
+
+<!--   <section id="sotd" class="introductory">
+    <h2>Status of This Document</h2>
+    <p>
+      This specification was published by the
+      <a href="https://www.w3.org/community/odrl/">ODRL Community Group</a>. It is not a W3C Standard nor is it
+      on the W3C Standards Track.
+      
+            Please note that under the
+            <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>
+            there is a limited opt-out and other conditions apply.
+      Learn more about
+      <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>.
+    </p>
+    <p>
+    <a href="https://github.com/w3c/odrl/issues/">GitHub Issues</a> are preferred for
+          discussion of this specification.
+    Alternatively, you can send comments to our mailing list.
+          Please send them to
+          <a href="mailto:public-odrl@w3.org">public-odrl@w3.org</a>
+          (<a href="mailto:public-odrl-request@w3.org?subject=subscribe">subscribe</a>,
+          <a href="https://lists.w3.org/Archives/Public/public-odrl/">archives</a>).
+    </p>
+  </section> -->
+  <nav id="toc">
+    <h2 class="introductory" id="table-of-contents">Table of Contents</h2>
+    <ol class="toc">
+      <li class="tocline">
+        <a class="tocxref" href="https://bcat65811.github.io/apn.html#ack">
+          <bdi class="secno">1. </bdi>Acknowledgments
+        </a>
+      </li>
+      <li class="tocline">
+        <a class="tocxref" href="https://bcat65811.github.io/apn.html#intro">
+          <bdi class="secno">2. </bdi>Introduction
+        </a>
+        <ol class="toc">
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#orsd">
+              <bdi class="secno">2.1 </bdi>Ontology Requirement Specification Document
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#diag">
+              <bdi class="secno">2.2 </bdi>Ontology diagram
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#conventions">
+              <bdi class="secno">2.3 </bdi>Document Conventions
+            </a>
+          </li>
+        </ol>
+      </li>
+      <li class="tocline">
+        <a class="tocxref" href="https://bcat65811.github.io/apn.html#spec">
+          <bdi class="secno">3. </bdi>Base ontology
+        </a>
+        <ol class="toc">
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x3-3-1-notification">
+              <bdi class="secno">3.1 </bdi>Push Notification
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x3-3-2-app">
+              <bdi class="secno">3.2 </bdi>Application
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x3-3-3-urgency">
+              <bdi class="secno">3.3 </bdi>Urgency
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x3-3-4-cta">
+              <bdi class="secno">3.4 </bdi>Call-To-Action
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x3-3-5-personalisation">
+              <bdi class="secno">3.5 </bdi>Personalisation
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x3-3-6-audience">
+              <bdi class="secno">3.6 </bdi>Target Audience
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x3-3-7-campaign">
+              <bdi class="secno">3.7 </bdi>Campaign Type
+            </a>
+          </li>
+        </ol>
+      </li>
+      <li class="tocline">
+        <a class="tocxref" href="https://bcat65811.github.io/apn.html#x4-urgency">
+          <bdi class="secno">4. </bdi>Urgency categories
+        </a>
+        <ol class="toc">
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x4-1-next-minutes">
+              <bdi class="secno">4.1 </bdi>Next Minutes
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x4-2-next-hours">
+              <bdi class="secno">4.2 </bdi>Next Hours
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x4-3-next-days">
+              <bdi class="secno">4.3 </bdi>Next Days
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x4-4-next-weeks">
+              <bdi class="secno">4.4 </bdi>Next Weeks
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x4-5-next-months">
+              <bdi class="secno">4.5 </bdi>Next Months
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x4-6-next-years">
+              <bdi class="secno">4.6 </bdi>Next Years
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x4-7-holidays">
+              <bdi class="secno">4.7 </bdi>Holidays
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x4-8-seasons">
+              <bdi class="secno">4.8 </bdi>Seasons
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x4-9-unclear">
+              <bdi class="secno">4.9 </bdi>Unclear
+            </a>
+          </li>
+        </ol>
+      </li>
+      <li class="tocline">
+        <a class="tocxref" href="https://bcat65811.github.io/apn.html#x5-cta">
+          <bdi class="secno">5. </bdi>Call-To-Action categories
+        </a>
+        <ol class="toc">
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x5-1-account-management">
+              <bdi class="secno">5.1 </bdi>Account Management
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x5-2-awareness">
+              <bdi class="secno">5.2 </bdi>Awareness
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x5-3-claim">
+              <bdi class="secno">5.3 </bdi>Claim
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x5-4-discover">
+              <bdi class="secno">5.4 </bdi>Discover
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x5-5-download">
+              <bdi class="secno">5.5 </bdi>Download
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x5-6-feedback">
+              <bdi class="secno">5.6 </bdi>Feedback
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x5-7-play">
+              <bdi class="secno">5.7 </bdi>Play
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x5-8-purchase">
+              <bdi class="secno">5.8 </bdi>Purchase
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x5-9-reminder">
+              <bdi class="secno">5.9 </bdi>Reminder
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x5-10-social">
+              <bdi class="secno">5.10 </bdi>Social
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x5-11-watch">
+              <bdi class="secno">5.11 </bdi>Watch
+            </a>
+          </li>
+        </ol>
+      </li>
+      <li class="tocline">
+        <a class="tocxref" href="https://bcat65811.github.io/apn.html#x6-personalisation">
+          <bdi class="secno">6. </bdi>Personalisation categories
+        </a>
+        <ol class="toc">
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x6-1-age">
+              <bdi class="secno">6.1 </bdi>Age
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x6-2-authenticating">
+              <bdi class="secno">6.2 </bdi>Authenticating
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x6-3-browsing">
+              <bdi class="secno">6.3 </bdi>Browsing Behavior
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x6-4-device">
+              <bdi class="secno">6.4 </bdi>Device Based
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x6-5-ethnic">
+              <bdi class="secno">6.5 </bdi>Ethnic Origin
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x6-6-family">
+              <bdi class="secno">6.6 </bdi>Family Structure
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x6-7-location">
+              <bdi class="secno">6.7 </bdi>Location
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x6-8-medical">
+              <bdi class="secno">6.8 </bdi>Medical Health
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x6-9-political">
+              <bdi class="secno">6.9 </bdi>Political Affiliation
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x6-10-interest">
+              <bdi class="secno">6.10 </bdi>Interest
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x6-11-motivation">
+              <bdi class="secno">6.11 </bdi>Personal Motivations
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x6-12-professional">
+              <bdi class="secno">6.12 </bdi>Professional
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x6-13-purchases">
+              <bdi class="secno">6.13 </bdi>Purchases and Spending Habit
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x6-14-social">
+              <bdi class="secno">6.14 </bdi>Social Network
+            </a>
+          </li>
+        </ol>
+      </li>
+      <li class="tocline">
+        <a class="tocxref" href="https://bcat65811.github.io/apn.html#x7-target-audience">
+          <bdi class="secno">7. </bdi>Target Audience categories
+        </a>
+        <ol class="toc">
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x7-1-behavior">
+              <bdi class="secno">7.1 </bdi>Behavior
+            </a>
+            <ol class="toc">
+              <li class="tocline">
+                <a class="tocxref" href="https://bcat65811.github.io/apn.html#x7-1-1-engagement">
+                  <bdi class="secno">7.1.1 </bdi>Engagement
+                </a>
+              </li>
+              <li class="tocline">
+                <a class="tocxref" href="https://bcat65811.github.io/apn.html#x7-1-2-loyalty">
+                  <bdi class="secno">7.1.2 </bdi>Loyalty
+                </a>
+              </li>
+              <li class="tocline">
+                <a class="tocxref" href="https://bcat65811.github.io/apn.html#x7-1-3-occasion">
+                  <bdi class="secno">7.1.3 </bdi>Occasion
+                </a>
+              </li>
+              <li class="tocline">
+                <a class="tocxref" href="https://bcat65811.github.io/apn.html#x7-1-4-product">
+                  <bdi class="secno">7.1.4 </bdi>Product
+                </a>
+              </li>
+              <li class="tocline">
+                <a class="tocxref" href="https://bcat65811.github.io/apn.html#x7-1-5-purchasing-reason">
+                  <bdi class="secno">7.1.5 </bdi>Purchasing Reason
+                </a>
+              </li>
+            </ol>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x7-2-demographic">
+              <bdi class="secno">7.2 </bdi>Demographic
+            </a>
+            <ol class="toc">
+              <li class="tocline">
+                <a class="tocxref" href="https://bcat65811.github.io/apn.html#x7-2-1-family-status">
+                  <bdi class="secno">7.2.1 </bdi>Family Status
+                </a>
+              </li>
+              <li class="tocline">
+                <a class="tocxref" href="https://bcat65811.github.io/apn.html#x7-2-2-health">
+                  <bdi class="secno">7.2.2 </bdi>Health
+                </a>
+              </li>
+              <li class="tocline">
+                <a class="tocxref" href="https://bcat65811.github.io/apn.html#x7-2-3-job">
+                  <bdi class="secno">7.2.3 </bdi>Job
+                </a>
+              </li>
+              <li class="tocline">
+                <a class="tocxref" href="https://bcat65811.github.io/apn.html#x7-2-4-residence">
+                  <bdi class="secno">7.2.4 </bdi>Residence
+                </a>
+              </li>
+            </ol>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x7-3-geographic">
+              <bdi class="secno">7.3 </bdi>Geographic
+            </a>
+            <ol class="toc">
+              <li class="tocline">
+                <a class="tocxref" href="https://bcat65811.github.io/apn.html#x7-3-1-country">
+                  <bdi class="secno">7.3.1 </bdi>Country
+                </a>
+              </li>
+              <li class="tocline">
+                <a class="tocxref" href="https://bcat65811.github.io/apn.html#x7-3-2-region">
+                  <bdi class="secno">7.3.2 </bdi>Region
+                </a>
+              </li>
+            </ol>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x7-4-psychographic">
+              <bdi class="secno">7.4 </bdi>Psychographic
+            </a>
+            <ol class="toc">
+              <li class="tocline">
+                <a class="tocxref" href="https://bcat65811.github.io/apn.html#x7-4-1-interest">
+                  <bdi class="secno">7.4.1 </bdi>Interest
+                </a>
+              </li>
+              <li class="tocline">
+                <a class="tocxref" href="https://bcat65811.github.io/apn.html#x7-4-2-lifestyle">
+                  <bdi class="secno">7.4.2 </bdi>Lifestyle
+                </a>
+              </li>
+              <li class="tocline">
+                <a class="tocxref" href="https://bcat65811.github.io/apn.html#x7-4-3-motivation">
+                  <bdi class="secno">7.4.3 </bdi>Motivation
+                </a>
+              </li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+      <li class="tocline">
+        <a class="tocxref" href="https://bcat65811.github.io/apn.html#x8-campaign">
+          <bdi class="secno">8. </bdi>Campaign Type categories
+        </a>
+        <ol class="toc">
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x8-1-awareness">
+              <bdi class="secno">8.1 </bdi>Awareness
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x8-2-breaking">
+              <bdi class="secno">8.2 </bdi>Breaking Content
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x8-3-help">
+              <bdi class="secno">8.3 </bdi>Help & Feedback & Tips
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x8-4-loyalty">
+              <bdi class="secno">8.4 </bdi>Loyalty
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x8-5-newsletter">
+              <bdi class="secno">8.5 </bdi>Newsletter
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x8-6-onboarding">
+              <bdi class="secno">8.6 </bdi>Onboarding
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x8-7-product">
+              <bdi class="secno">8.7 </bdi>Product
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x8-8-promotional">
+              <bdi class="secno">8.8 </bdi>Promotional
+            </a>
+            <ol class="toc">
+              <li class="tocline">
+                <a class="tocxref" href="https://bcat65811.github.io/apn.html#x8-8-1-general">
+                  <bdi class="secno">8.8.1 </bdi>General
+                </a>
+              </li>
+              <li class="tocline">
+                <a class="tocxref" href="https://bcat65811.github.io/apn.html#x8-8-2-flash">
+                  <bdi class="secno">8.8.2 </bdi>Flash
+                </a>
+              </li>
+              <li class="tocline">
+                <a class="tocxref" href="https://bcat65811.github.io/apn.html#x8-8-3-rare">
+                  <bdi class="secno">8.8.3 </bdi>Rare
+                </a>
+              </li>
+            </ol>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x8-9-reengagement">
+              <bdi class="secno">8.9 </bdi>Re-engagement
+            </a>
+          </li>
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#x8-10-social">
+              <bdi class="secno">8.10 </bdi>Social
+            </a>
+          </li>
+        </ol>
+      </li>
+      <li class="tocline">
+        <a class="tocxref" href="https://bcat65811.github.io/apn.html#x9-examples">
+          <bdi class="secno">9. </bdi>Examples
+        </a>
+      </li>
+      <li class="tocline">
+        <a class="tocxref" href="https://bcat65811.github.io/apn.html#references">
+          <bdi class="secno">A. </bdi>References
+        </a>
+        <ol class="toc">
+          <li class="tocline">
+            <a class="tocxref" href="https://bcat65811.github.io/apn.html#informative-references">
+              <bdi class="secno">A.1 </bdi>Informative references
+            </a>
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </nav>
+
+  <section id="ack">
+      <h2 id="x1-acknowledgments">
+        <bdi class="secno">1. </bdi>Acknowledgments
+        <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#ack"></a>
+      </h2>
+  </section>
+
+  <section id="intro">
+    <h2 id="x2-introduction">
+      <bdi class="secno">2. </bdi>Introduction
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#intro"></a>
+    </h2>
+
+    <section id="orsd">
+      <h3 id="x2-1-document-orsd">
+        <bdi class="secno">2.1 </bdi>Ontology Requirement Specification Document
+        <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#orsd"></a>
+      </h3>
+
+      <table class="center">
+        <tr>
+          <th colspan=2 class="table-top">
+            Ontology for the Annotation of Push-Notifications
+          </th>
+        </tr>
+        <tr>
+          <th colspan=2 class="table-title">
+            1. Purpose
+          </th>
+        </tr>
+        <tr>
+          <td colspan=2 class="table-cell">
+            The purpose of this ontology is to support the annotation and extraction of insights
+            from push-notification data.
+          </td>
+        </tr>
+        <tr>
+          <th colspan=2 class="table-title">
+            2. Scope
+          </th>
+        </tr>
+        <tr>
+          <td colspan=2 class="table-cell">
+            The scope of this ontology is limited to the definition of a set of parameters 
+            that can be used to classify push-notification data, in particular its text content, 
+            with the end goal of creating a service which pushes more empathethic content to 
+            push-notification subscribers. Specifically, the notification content will be used
+            to categorize the notification in terms of: (i) its specific call-to-action, 
+            (ii) and respective marketing campaign type, (iii) its target audience, (iv) its time
+            sensitiveness and (v) the presence of information that can be used 
+            to infer personal data from the subscribers.
+          </td>
+        </tr>
+        <tr>
+          <th colspan=2 class="table-title">
+            3. Implementation Language
+          </th>
+        </tr>
+        <tr>
+          <td colspan=2 class="table-cell">
+            RDF
+          </td>
+        </tr>
+        <tr>
+          <th colspan=2 class="table-title">
+            4. Intended End-Users
+          </th>
+        </tr>
+        <tr>
+          <td colspan=2 class="table-cell">
+            Organizations with Web or application services which include push-notifications
+            in their communication flow with customers.
+          </td>
+        </tr>
+        <tr>
+          <th colspan=2 class="table-title">
+            5. Intended Uses
+          </th>
+        </tr>
+        <tr>
+          <td colspan=2 class="table-cell">
+            Use 1. Creation of multi-label classification models to automatically annotate push-notifications.<br>
+            Use 2. Generation of push-notification content based on annotations' model.
+          </td>
+        </tr>
+        <tr>
+          <th colspan=2 class="table-title">
+            6. Ontology Requirements
+          </th>
+        </tr>
+        <tr>
+          <th colspan=2 class="table-title">
+            a. Non-Functional Requirements
+          </th>
+        </tr>
+        <tr>
+          <td colspan=2 class="table-cell">
+            NFR 1. The ontology shall be published online with standard documentation.
+          </td>
+        </tr>
+        <tr>
+          <th colspan=2 class="table-title">
+            b. Functional Requirements: Groups of Competency Questions
+          </th>
+        </tr>
+        <tr>
+          <th class="table-title">
+            CQG1. Related to push-notification services
+          </th>
+          <th class="table-title">
+            CQG2. Related to push-notification categorization
+          </th>
+        </tr>
+        <tr>
+          <td class="table-cell">
+            CQ1. What is the content of the push-notification?<br>
+            CQ2. Which service / application pushed the notification?<br>
+            CQ3. What is the application type in relation to its content?
+          </td>
+          <td class="table-cell">
+            CQ4. What is the call-to-action of the notification?<br>
+            CQ5. Does the notification belong to a specific campaign type?<br>
+            CQ6. How urgent is the notification?<br>
+            CQ7. Does the notification have a clear target audience?<br>
+            CQ8. Does the notification contain features which indicate personalization?
+          </td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="diag">
+      <h3 id="x2-2-document-conventions">
+        <bdi class="secno">2.2 </bdi>Profile diagram
+        <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#diag"></a>
+      </h3>
+
+      <p>
+        The base concepts specified by APN are shown in the figure below.
+      </p>
+      <center>
+        <img src="ontology-base.png" alt="Ontology for the Annotation of Push-Notifications" width="800px">
+      </center>
+      </div>
+
+    </section>
+
+    <section id="conventions">
+      <h3 id="x2-2-document-conventions">
+        <bdi class="secno">2.3 </bdi>Document Conventions
+        <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#conventions"></a>
+      </h3>
+
+        <table class="def">
+            <tbody>
+              <tr>
+                <th>Prefix</th>
+                <th>Namespace</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>apn</td>
+                <td>https://w3id.org/apn/</td>
+                <td>[<cite><a class="bibref" data-link-type="biblio" href="https://bcat65811.github.io/apn.html#bib-apn" title="Ontology for the Annotation of Push-Notifications">apn</a></cite>]</td>
+              </tr>
+              <tr>
+                <td>dc</td>
+                <td>http://purl.org/dc/elements/1.1/</td>
+                <td>[<cite><a class="bibref" data-link-type="biblio" href="https://bcat65811.github.io/apn.html#bib-dc" title="DCMI Metadata Terms">dc</a></cite>]</td>
+              </tr>
+              <tr>
+                <td>dpv</td>
+                <td>http://www.w3.org/ns/dpv#</td>
+                <td>[<cite><a class="bibref" data-link-type="biblio" href="https://bcat65811.github.io/apn.html#bib-dpv" title="Data Privacy Vocabulary (DPV) version 0.2">dpv</a></cite>]</td>
+              </tr>
+              <tr>
+                <td>owl</td>
+                <td>http://www.w3.org/2002/07/owl#</td>
+                <td>[<cite><a class="bibref" data-link-type="biblio" href="https://bcat65811.github.io/apn.html#bib-owl2-overview" title="OWL 2 Web Ontology Language Document Overview (Second Edition)">owl2-overview</a></cite>]</td>
+              </tr>
+              <tr>
+                <td>rdf</td>
+                <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+                <td>[<cite><a class="bibref" data-link-type="biblio" href="https://bcat65811.github.io/apn.html#bib-rdf11-concepts" title="RDF 1.1 Concepts and Abstract Syntax">rdf11-concepts</a></cite>]</td>
+              </tr>
+              <tr>
+                <td>rdfs</td>
+                <td>http://www.w3.org/2000/01/rdf-schema#</td>
+                <td>[<cite><a class="bibref" data-link-type="biblio" href="https://bcat65811.github.io/apn.html#bib-rdf-schema" title="RDF Schema 1.1">rdf-schema</a></cite>]</td>
+              </tr>
+              <tr>
+                <td>skos</td>
+                <td>http://www.w3.org/2004/02/skos/core#</td>
+                <td>[<cite><a class="bibref" data-link-type="biblio" href="https://bcat65811.github.io/apn.html#bib-skos" title="Simple Knowledge Organization System">skos</a></cite>]</td>
+              </tr>
+              <tr>
+                <td>vann</td>
+                <td>http://purl.org/vocab/vann/</td>
+                <td>[<cite><a class="bibref" data-link-type="biblio" href="https://bcat65811.github.io/apn.html#bib-vann" title="VANN: A vocabulary for annotating vocabulary descriptions">vann</a></cite>]</td>
+              </tr>
+              <tr>
+                <td>xsd</td>
+                <td>http://www.w3.org/2001/XMLSchema#</td>
+                <td>[<cite><a class="bibref" data-link-type="biblio" href="https://bcat65811.github.io/apn.html#bib-xsd" title="XML Schema">xsd</a></cite>]</td>
+              </tr>
+            </tbody>
+          </table>
+
+    </section>
+  </section>
+
+  <section id="spec">
+    <h2 id="x3-spec">
+      <bdi class="secno">3. </bdi>Base ontology
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#spec"></a>
+    </h2>
+    <p>
+      <!-- This ODRL profile relies on the invocation of legal concepts using DPV and ACL for the reference to access mode operations.
+      Its core concepts are Purpose, Personal Data Categories, Processing, Access and Legal Entities. -->
+    </p>
+    <section id="notification">
+      <h3 id="x3-3-1-notification">
+        <bdi class="secno">3.1 </bdi>Push Notification
+        <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x3-3-1-notification"></a>
+      </h3>
+      <table class="def propdef">
+          <tbody><tr><th>Label:</th> <td>Push Notification</td></tr>
+          <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#PushNotification">https://w3id.org/apn#PushNotification</a></td></tr>
+          <tr><th>Definition:</th> 
+            <td>
+              Push notifications are pop-up messages, sent by mobile or browser applications, that appear on the users’ devices. 
+              Subscribers can be anywhere and still receive these messages as long as they’re online or have their browsers running on their devices.
+            </td>
+          </tr>
+          </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>notification ID</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#notificationID">https://w3id.org/apn#notificationID</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Unique identifier of the notification
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#PushNotification">PushNotification</a></td></tr>
+        <tr><th>Range:</th> <td><a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a></td></tr>
+        </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>notification text</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#notificationText">https://w3id.org/apn#notificationText</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Text content of the notification, including emojis
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#PushNotification">PushNotification</a></td></tr>
+        <tr><th>Range:</th> <td><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></td></tr>
+        </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>pushed on</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#pushedOn">https://w3id.org/apn#pushedOn</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Date and time when the notification is pushed by the application 
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#PushNotification">PushNotification</a></td></tr>
+        <tr><th>Range:</th> <td><a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a></td></tr>
+        </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>pushed by</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#pushedBy">https://w3id.org/apn#pushedBy</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Indicates the app that pushed the notification 
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#PushNotification">PushNotification</a></td></tr>
+        <tr><th>Range:</th> <td><a href="https://w3id.org/apn#Application">Application</a></td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="application">
+      <h3 id="x3-3-2-app">
+        <bdi class="secno">3.2 </bdi>Application
+        <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x3-3-2-app"></a>
+      </h3>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>Application</td></tr>
+          <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Application">https://w3id.org/apn#Application</a></td></tr>
+          <tr><th>Definition:</th> 
+            <td>
+              Computer program or software application designed to run on a mobile device such as a phone, tablet, or watch. 
+              Mobile applications often stand in contrast to desktop applications which are designed to run on desktop computers, 
+              and web applications which run in mobile web browsers rather than directly on the mobile device. 
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>account created</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#accountCreated">https://w3id.org/apn#accountCreated</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            User created an account to use the application
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#Application">Application</a></td></tr>
+        <tr><th>Range:</th> <td><a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a></td></tr>
+        </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>app name</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#appName">https://w3id.org/apn#appName</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            The name of the application
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#Application">Application</a></td></tr>
+        <tr><th>Range:</th> <td><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></td></tr>
+        </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>has app type</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#hasAppType">https://w3id.org/apn#hasAppType</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Indicates the application type
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#Application">Application</a></td></tr>
+        <tr><th>Range:</th> <td>
+          <a href="https://w3id.org/apn#ApplicationType">ApplicationType</a>
+        </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>in app purchases</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#inAppPurchases">https://w3id.org/apn#inAppPurchases</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Indicates if the application includes paid features/services
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#Application">Application</a></td></tr>
+        <tr><th>Range:</th> <td><a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>
+        </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>install date</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#installDate">https://w3id.org/apn#installDate</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Indicates the date and time when the application was installed
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#Application">Application</a></td></tr>
+        <tr><th>Range:</th> <td><a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a>
+        </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>number of downloads</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#numberOfDownloads">https://w3id.org/apn#numberOfDownloads</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Indicates the number of times that the application was downloaded
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#Application">Application</a></td></tr>
+        <tr><th>Range:</th> <td><a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>
+        </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>number of reviews</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#numberOfReviews">https://w3id.org/apn#numberOfReviews</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Indicates the number of reviews that the application has on the app store
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#Application">Application</a></td></tr>
+        <tr><th>Range:</th> <td><a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>
+        </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>requires account</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#requiresAccount">https://w3id.org/apn#requiresAccount</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Indicates if the application requires the creation of an account to use
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#Application">Application</a></td></tr>
+        <tr><th>Range:</th> <td><a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>
+        </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>size in MB</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#sizeInMB">https://w3id.org/apn#sizeInMB</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Indicates the size of the application in megabytes
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#Application">Application</a></td></tr>
+        <tr><th>Range:</th> <td><a href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>
+        </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>stars</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#stars">https://w3id.org/apn#stars</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Indicates the mean number of stars given by the users to the application
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#Application">Application</a></td></tr>
+        <tr><th>Range:</th> <td><a href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a>
+        </tbody>
+      </table>
+    </section>
+    <section id="urgency">
+      <h3 id="x3-3-3-urgency">
+        <bdi class="secno">3.3 </bdi>Urgency
+        <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x3-3-3-urgency"></a>
+      </h3>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>Urgency</td></tr>
+          <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Urgency">https://w3id.org/apn#Urgency</a></td></tr>
+          <tr><th>Definition:</th> 
+            <td>
+              The urgency of the notification - if it contains information that is only relevant for a certain period of time and becomes redundant 
+              if that period of time passes (for example, a notification about Friday night is irrelevant if delivered on Saturday morning).
+            </td>
+          </tr>
+          <tr><th>Superclass Of:</th> <td>
+            <a href="https://w3id.org/apn#NextMinutes">NextMinutes</a>, 
+            <a href="https://w3id.org/apn#NextHours">NextHours</a>, 
+            <a href="https://w3id.org/apn#NextDays">NextDays</a>, 
+            <a href="https://w3id.org/apn#NextWeeks">NextWeeks</a>, 
+            <a href="https://w3id.org/apn#NextMonths">NextMonths</a>, 
+            <a href="https://w3id.org/apn#NextYears">NextYears</a>, 
+            <a href="https://w3id.org/apn#Holidays">Holidays</a>, 
+            <a href="https://w3id.org/apn#Seasons">Seasons</a>, 
+            <a href="https://w3id.org/apn#Unclear">Unclear</a>
+          </td></tr>
+        </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>is time sensitive</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#isTimeSensitive">https://w3id.org/apn#isTimeSensitive</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Indicates weather the notification is urgent, i.e. time-sensitive, or not.
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#PushNotification">PushNotification</a></td></tr>
+        <tr><th>Range:</th> <td><a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a></td></tr>
+        </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>remains relevant</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#remainsRelevant">https://w3id.org/apn#remainsRelevant</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Indicates the urgency of the notification - the period of time when the notification remains relevant for the user
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#PushNotification">PushNotification</a></td></tr>
+        <tr><th>Range:</th> <td><a href="https://w3id.org/apn#Urgency">Urgency</a></td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="cta">
+      <h3 id="x3-3-4-cta">
+        <bdi class="secno">3.4 </bdi>Call-To-Action
+        <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x3-3-4-cta"></a>
+      </h3>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>Call-To-Action</td></tr>
+          <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#CallToAction">https://w3id.org/apn#CallToAction</a></td></tr>
+          <tr><th>Definition:</th> 
+            <td>
+              The call-to-action of the notification - for example, "Anne sent you a message on App X" is encouraging the user to interact 
+              with the app to communicate with other people.
+            </td>
+          </tr>
+          <tr><th>Superclass Of:</th> <td>
+            <a href="https://w3id.org/apn#AccountManagement">AccountManagement</a>, 
+            <a href="https://w3id.org/apn#Awareness">Awareness</a>, 
+            <a href="https://w3id.org/apn#Claim">Claim</a>, 
+            <a href="https://w3id.org/apn#Discover">Discover</a>, 
+            <a href="https://w3id.org/apn#Download">Download</a>, 
+            <a href="https://w3id.org/apn#Feedback">Feedback</a>, 
+            <a href="https://w3id.org/apn#Play">Play</a>, 
+            <a href="https://w3id.org/apn#Purchase">Purchase</a>, 
+            <a href="https://w3id.org/apn#Reminder">Reminder</a>, 
+            <a href="https://w3id.org/apn#Social">Social</a>, 
+            <a href="https://w3id.org/apn#Watch">Watch</a>
+          </td></tr>
+        </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>has call-to-action</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#hasCTA">https://w3id.org/apn#hasCTA</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Indicates the call to action of the notification
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#PushNotification">PushNotification</a></td></tr>
+        <tr><th>Range:</th> <td><a href="https://w3id.org/apn#CallToAction">CallToAction</a></td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="personalisation">
+      <h3 id="x3-3-5-personalisation">
+        <bdi class="secno">3.5 </bdi>Personalisation
+        <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x3-3-5-personalisation"></a>
+      </h3>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>Personalisation</td></tr>
+          <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Personalisation">https://w3id.org/apn#Personalisation</a></td></tr>
+          <tr><th>Definition:</th> 
+            <td>
+              Indicates personal information that can be derived or inferred from the notification.
+            </td>
+          </tr>
+          <tr><th>Superclass Of:</th> <td>
+            <a href="http://www.w3.org/ns/dpv#Age">Age</a>,
+            <a href="http://www.w3.org/ns/dpv#Authenticating">Authenticating</a>,
+            <a href="http://www.w3.org/ns/dpv#BrowsingBehavior">BrowsingBehavior</a>,
+            <a href="http://www.w3.org/ns/dpv#DeviceBased">DeviceBased</a>,
+            <a href="http://www.w3.org/ns/dpv#EthnicOrigin">EthnicOrigin</a>,
+            <a href="http://www.w3.org/ns/dpv#FamilyStructure">FamilyStructure</a>,
+            <a href="http://www.w3.org/ns/dpv#Location">Location</a>,
+            <a href="http://www.w3.org/ns/dpv#MedicalHealth">MedicalHealth</a>,
+            <a href="http://www.w3.org/ns/dpv#PoliticalAffiliation">PoliticalAffiliation</a>,
+            <a href="http://www.w3.org/ns/dpv#Interest">Interest</a>,
+            <a href="https://w3id.org/apn#PersonalMotivations">PersonalMotivations</a>,
+            <a href="http://www.w3.org/ns/dpv#Professional">Professional</a>,
+            <a href="http://www.w3.org/ns/dpv#PurchasesAndSpendingHabit">PurchasesAndSpendingHabit</a>,
+            <a href="http://www.w3.org/ns/dpv#SocialNetwork">SocialNetwork</a>
+          </td></tr>
+        </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>can be used to infer</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#canBeUsedToInfer">https://w3id.org/apn#canBeUsedToInfer</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Indicates the type of personal data that can be inferred from the notification.
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#PushNotification">PushNotification</a></td></tr>
+        <tr><th>Range:</th> <td><a href="https://w3id.org/apn#Personalisation">Personalisation</a></td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="audience">
+      <h3 id="x3-3-6-audience">
+        <bdi class="secno">3.6 </bdi>Target Audience
+        <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x3-3-6-audience"></a>
+      </h3>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>Target Audience</td></tr>
+          <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#TargetAudience">https://w3id.org/apn#TargetAudience</a></td></tr>
+          <tr><th>Definition:</th> 
+            <td>
+              Indicates the audience being targeted by the notification, based on their behavior or other demographic, geographic or psychographic characteristics.
+            </td>
+          </tr>
+          <tr><th>Superclass Of:</th> <td>
+            <a href="https://w3id.org/apn#Behavior">Behavior</a>,
+            <a href="https://w3id.org/apn#Demographic">Demographic</a>,
+            <a href="https://w3id.org/apn#Geographic">Geographic</a>,
+            <a href="https://w3id.org/apn#Psychographic">Psychographic</a>
+          </td></tr>
+        </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>has target audience</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#hasTargetAudience">https://w3id.org/apn#hasTargetAudience</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Indicates the target audience of the notification
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#PushNotification">PushNotification</a></td></tr>
+        <tr><th>Range:</th> <td><a href="https://w3id.org/apn#TargetAudience">TargetAudience</a></td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="audience">
+      <h3 id="x3-3-7-campaign">
+        <bdi class="secno">3.7 </bdi>Campaign Type
+        <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x3-3-7-campaign"></a>
+      </h3>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>Campaign Type</td></tr>
+          <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#CampaignType">https://w3id.org/apn#CampaignType</a></td></tr>
+          <tr><th>Definition:</th> 
+            <td>
+              Indicates the campaign type of the notification, based on the marketing strategy followed by a company to keeps its brand's visibility, 
+              i.e., to mantain and increase the number of notification subscribers.
+            </td>
+          </tr>
+          <tr><th>Superclass Of:</th> <td>
+            <a href="https://w3id.org/apn#Awareness">Awareness</a>,
+            <a href="https://w3id.org/apn#BreakingContent">Breaking Content</a>,
+            <a href="https://w3id.org/apn#HelpFeedbackTips">Help & Feedback & Tips</a>,
+            <a href="https://w3id.org/apn#Loyalty">Loyalty</a>,
+            <a href="https://w3id.org/apn#Newsletter">Newsletter</a>,
+            <a href="https://w3id.org/apn#Onboarding">Onboarding</a>,
+            <a href="https://w3id.org/apn#Product">Product</a>,
+            <a href="https://w3id.org/apn#Promotional">Promotional</a>,
+            <a href="https://w3id.org/apn#Reengagement">Re-engagement</a>,
+            <a href="https://w3id.org/apn#Social">Social</a>
+          </td></tr>
+        </tbody>
+      </table>
+      <table class="def propdef">
+        <tbody><tr><th>Label:</th> <td>has campaign type</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#hasCampaignType">https://w3id.org/apn#hasCampaignType</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Indicates the campaign type of the notification
+          </td>
+        </tr>
+        <tr><th>Domain:</th> <td><a href="https://w3id.org/apn#PushNotification">PushNotification</a></td></tr>
+        <tr><th>Range:</th> <td><a href="https://w3id.org/apn#CampaignType">CampaignType</a></td></tr>
+        </tbody>
+      </table>
+    </section>
+  </section>
+
+  <section id="x4-urgency">
+    <h2 id="x4-urgency">
+      <bdi class="secno">4. </bdi>Urgency categories
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x4-urgency"></a>
+    </h2>
+    <div>
+      <p>
+        Notifications can be classified in terms of its urgency, i.e., if they contain information that is only relevant for a certain period 
+        of time and becomes redundant after it (for example, a notification about Friday night is irrelevant if delivered on Saturday morning).
+      </p>
+      <p>
+        Examples:
+      </p>
+      <code>
+        Hungry👶? You know what to do🙋️ 🙋 ️Grab the best deals on baby🍼 food processors, breast pumps, pacifiers, other must-haves Hurry! 
+        Up to 70% off feeding essentials
+      </code>
+      <p>
+        In the notification above, the content includes words like "hurry" and "70% off" suggesting an offer may expire soon, however the urgency 
+        of the notification is unclear.
+      </p>
+      <code>
+        Flurv 💬 Henrybrett just joined our local community - Be the first to welcome him!
+      </code>
+      <p>
+        In the notification above, "Henrybrett" is a new member of a social community and needs to feel welcome - while not a very urgent notification, 
+        this guy will not be a new member in a few weeks, therefore this notification is relevant for just a few days before it is redundant.
+      </p>
+      <p>
+        The defined urgency subclasses are shown in the figure below.
+      </p>
+      <center>
+        <img src="urgency.PNG" alt="Urgency categories" width="500px">
+      </center>
+    </div>
+    <h3 id="x4-1-next-minutes">
+      <bdi class="secno">4.1 </bdi>Next Minutes
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x4-1-next-minutes"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Next Minutes</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#NextMinutes">https://w3id.org/apn#NextMinutes</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            The notification will only be relevant for the next few minutes.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x4-2-next-hours">
+      <bdi class="secno">4.2 </bdi>Next Hours
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x4-2-next-hours"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Next Hours</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#NextHours">https://w3id.org/apn#NextHours</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            The notification will be relevant for the next few hours.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x4-3-next-days">
+      <bdi class="secno">4.3 </bdi>Next Days
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x4-3-next-days"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Next Days</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#NextDays">https://w3id.org/apn#NextDays</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            The notification will be relevant for the next few days.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x4-4-next-weeks">
+      <bdi class="secno">4.4 </bdi>Next Weeks
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x4-4-next-weeks"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Next Weeks</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#NextWeeks">https://w3id.org/apn#NextWeeks</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            The notification will be relevant for the next few weeks.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x4-5-next-months">
+      <bdi class="secno">4.5 </bdi>Next Months
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x4-5-next-months"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Next Months</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#NextMonths">https://w3id.org/apn#NextMonths</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            The notification will be relevant for the next few months.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x4-6-next-years">
+      <bdi class="secno">4.6 </bdi>Next Years
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x4-6-next-years"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Next Years</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#NextYears">https://w3id.org/apn#NextYears</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            The notification will be relevant for the next few years.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x4-7-holidays">
+      <bdi class="secno">4.7 </bdi>Holidays
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x4-7-holidays"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Holidays</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Holidays">https://w3id.org/apn#Holidays</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            The notification will be relevant in the time leading up to a holiday (Christmas, Halloween, Mother's Day, ...).
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x4-8-seasons">
+      <bdi class="secno">4.8 </bdi>Seasons
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x4-8-seasons"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Seasons</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Seasons">https://w3id.org/apn#Seasons</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            The notification will only be relevant in certain seasons (summer, winter, ...).
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x4-9-unclear">
+      <bdi class="secno">4.9 </bdi>Unclear
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x4-9-unclear"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Unclear</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Unclear">https://w3id.org/apn#Unclear</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            The notification conveys some urgency (for example using words like "now" or "hurry up"), but from the content 
+            of the notification, it is not possible to identify how long it will remain relevant.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="x5-cta">
+    <h2 id="x5-cta">
+      <bdi class="secno">5. </bdi>Call-To-Action categories
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x5-cta"></a>
+    </h2>
+    <div>
+      <p>
+        Notifications can be classified in terms of its call-to-action, i.e., if they encourage subscribers to perform a certain type of action.
+      </p>
+      <p>
+        Examples:
+      </p>
+      <code>
+        LAST CHANCE -50% 🔥 600+ styles 🛒 Shop before midnight >>
+      </code>
+      <p>
+        In the notification above, the call-to-action encourages the subscribers make a purchase.
+      </p>
+      <code>
+        What the Delta variant so much more contagious, and what does it mean for your life, whether you're vaccinated or unvaccinated? Listen now
+      </code>
+      <p>
+        In the notification above, the call-to-action teases the subscribers to interact with the app to discover more about the topic.
+      </p>
+      <p>
+        The defined call-to-action subclasses are shown in the figure below.
+      </p>
+      <center>
+        <img src="cta.PNG" alt="Call-To-Action categories" width="500px">
+      </center>
+    </div>
+    <h3 id="x5-1-account-management">
+      <bdi class="secno">5.1 </bdi>Account Management
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x5-1-account-management"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Account Management</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#AccountManagement">https://w3id.org/apn#AccountManagement</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Notifications that encourage subscribers to create and/or log into an account to take advantage of a certain feature.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x5-2-awareness">
+      <bdi class="secno">5.2 </bdi>Awareness
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x5-2-awareness"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Awareness</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Awareness">https://w3id.org/apn#Awareness</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            The notification makes subscribers aware of information that does not need further investigation by the subscriber, e.g., 
+            a new feature, upcoming holiday, weather, stock price, score in a match, etc.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x5-3-claim">
+      <bdi class="secno">5.3 </bdi>Claim
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x5-3-claim"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Claim</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Claim">https://w3id.org/apn#Claim</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Notifications that encourage the subscribers to click and claim some prize or reward from the application.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x5-4-discover">
+      <bdi class="secno">5.4 </bdi>Discover
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x5-4-discover"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Discover</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Discover">https://w3id.org/apn#Discover</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Notifications that tease the content of the information itself to generate curiosity on the users and lead them to engage with the app.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x5-5-download">
+      <bdi class="secno">5.5 </bdi>Download
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x5-5-download"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Download</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Download">https://w3id.org/apn#Download</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Notifications to get the subscriber to download some asset.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x5-6-feedback">
+      <bdi class="secno">5.6 </bdi>Feedback
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x5-6-feedback"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Feedback</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Feedback">https://w3id.org/apn#Feedback</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Notifications to get the subscriber to provide some form of feedback or response, for instance on the app's functionalities.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x5-7-play">
+      <bdi class="secno">5.7 </bdi>Play
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x5-7-play"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Play</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Play">https://w3id.org/apn#Play</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Notifications related with gaming apps, where the subscriber is encouraged to re-engage with the game.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x5-8-purchase">
+      <bdi class="secno">5.8 </bdi>Purchase
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x5-8-purchase"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Purchase</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Purchase">https://w3id.org/apn#Purchase</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Notifications to get the subscriber to purchase a product or service.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x5-9-reminder">
+      <bdi class="secno">5.9 </bdi>Reminder
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x5-9-reminder"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Reminder</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Reminder">https://w3id.org/apn#Reminder</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Notifications that serve as a reminder or alert to the users or provide advice / tips.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x5-10-social">
+      <bdi class="secno">5.10 </bdi>Social
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x5-10-social"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Social</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Social">https://w3id.org/apn#Social</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Notifications that encourage the subscriber to engage with social tools e.g. share, like, comment, reply.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x5-11-watch">
+      <bdi class="secno">5.11 </bdi>Watch
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x5-11-watch"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Watch</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Watch">https://w3id.org/apn#Watch</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Notifications that encourage the user to watch some content on the application.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="x6-personalisation">
+    <h2 id="x6-personalisation">
+      <bdi class="secno">6. </bdi>Personalisation categories
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x6-personalisation"></a>
+    </h2>
+    <div>
+      <p>
+        Notifications can be classified in terms of the personal information that they contain or can be inferred from them.
+      </p>
+      <p>
+        Examples:
+      </p>
+      <code>
+        LinkedIn , 21 new jobs for chief executive officer in EMEA
+      </code>
+      <p>
+        Professional and geographical information from the subscriber can be inferred from the notification above.
+      </p>
+      <code>
+        Wedding countdown 💍 You are getting married in 116 days 💍
+      </code>
+      <p>
+        Familial information from the subscriber can be inferred from the notification above.
+      </p>
+      <p>
+        The defined personalisation subclasses are shown in the figure below.
+        The majority of them is imported from the Data Privacy Vocabulary (DPV).
+      </p>
+      <center>
+        <img src="personalisation.PNG" alt="Personalisation categories" width="600px">
+      </center>
+    </div>
+    <h3 id="x6-1-age">
+      <bdi class="secno">6.1 </bdi>Age
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x6-1-age"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Age</td></tr>
+        <tr><th>IRI:</th> <td><a href="http://www.w3.org/ns/dpv#Age">http://www.w3.org/ns/dpv#Age</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Information about age.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x6-2-authenticating">
+      <bdi class="secno">6.2 </bdi>Authenticating
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x6-2-authenticating"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Authenticating</td></tr>
+        <tr><th>IRI:</th> <td><a href="http://www.w3.org/ns/dpv#Authenticating">http://www.w3.org/ns/dpv#Authenticating</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Information about authentication and information used for authenticating.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x6-3-browsing">
+      <bdi class="secno">6.3 </bdi>Browsing Behavior
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x6-3-browsing"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Browsing Behavior</td></tr>
+        <tr><th>IRI:</th> <td><a href="http://www.w3.org/ns/dpv#BrowsingBehavior">http://www.w3.org/ns/dpv#BrowsingBehavior</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Information about browsing behavior.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x6-4-device">
+      <bdi class="secno">6.4 </bdi>Device Based
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x6-4-device"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Device Based</td></tr>
+        <tr><th>IRI:</th> <td><a href="http://www.w3.org/ns/dpv#DeviceBased">http://www.w3.org/ns/dpv#DeviceBased</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Information about the device, including type of device, operation system, software, applications, ...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x6-5-ethnic">
+      <bdi class="secno">6.5 </bdi>Ethnic Origin
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x6-5-ethnic"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Ethnic Origin</td></tr>
+        <tr><th>IRI:</th> <td><a href="http://www.w3.org/ns/dpv#EthnicOrigin">http://www.w3.org/ns/dpv#EthnicOrigin</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Information about ethnic origin.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x6-6-family">
+      <bdi class="secno">6.6 </bdi>Family Structure
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x6-6-family"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Family Structure</td></tr>
+        <tr><th>IRI:</th> <td><a href="http://www.w3.org/ns/dpv#FamilyStructure">http://www.w3.org/ns/dpv#FamilyStructure</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Information about family and familial structure, including marital status, parenting, pregnancies, ...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x6-7-location">
+      <bdi class="secno">6.7 </bdi>Location
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x6-7-location"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Location</td></tr>
+        <tr><th>IRI:</th> <td><a href="http://www.w3.org/ns/dpv#Location">http://www.w3.org/ns/dpv#Location</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Information about location, including city, region, country, GPS coordinates, ...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x6-8-medical">
+      <bdi class="secno">6.8 </bdi>Medical Health
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x6-8-medical"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Medical Health</td></tr>
+        <tr><th>IRI:</th> <td><a href="http://www.w3.org/ns/dpv#MedicalHealth">http://www.w3.org/ns/dpv#MedicalHealth</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Information about physical or mental health, medical conditions or healthcare.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x6-9-political">
+      <bdi class="secno">6.9 </bdi>Political Affiliation
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x6-9-political"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Political Affiliation</td></tr>
+        <tr><th>IRI:</th> <td><a href="http://www.w3.org/ns/dpv#PoliticalAffiliation">http://www.w3.org/ns/dpv#PoliticalAffiliation</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Information about political affiliations or preferences.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x6-10-interest">
+      <bdi class="secno">6.10 </bdi>Interest
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x6-10-interest"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Interest</td></tr>
+        <tr><th>IRI:</th> <td><a href="http://www.w3.org/ns/dpv#Interest">http://www.w3.org/ns/dpv#Interest</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Information about specific interests, personal favorites, likes and dislikes, including sports, music, ...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x6-11-motivation">
+      <bdi class="secno">6.11 </bdi>Personal Motivations
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x6-11-motivation"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>PersonalMotivations</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#PersonalMotivations">https://w3id.org/apn#PersonalMotivations</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Information about personal motivations.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x6-12-professional">
+      <bdi class="secno">6.12 </bdi>Professional
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x6-12-professional"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Professional</td></tr>
+        <tr><th>IRI:</th> <td><a href="http://www.w3.org/ns/dpv#Professional">http://www.w3.org/ns/dpv#Professional</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Information about educational or professional career, including employment history and job preferences.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x6-13-purchases">
+      <bdi class="secno">6.13 </bdi>Purchases and Spending Habit
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x6-13-purchases"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Purchases and Spending Habit</td></tr>
+        <tr><th>IRI:</th> <td><a href="http://www.w3.org/ns/dpv#PurchasesAndSpendingHabit">http://www.w3.org/ns/dpv#PurchasesAndSpendingHabit</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Information about purchases made and money spent expressed as a habit.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x6-14-social">
+      <bdi class="secno">6.14 </bdi>Social Network
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x6-14-social"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Social Network</td></tr>
+        <tr><th>IRI:</th> <td><a href="http://www.w3.org/ns/dpv#SocialNetwork">http://www.w3.org/ns/dpv#SocialNetwork</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Information about friends or connections.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="x7-target-audience">
+    <h2 id="x7-target-audience">
+      <bdi class="secno">7. </bdi>Target Audience categories
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x7-target-audience"></a>
+    </h2>
+    <div>
+      <p>
+        Notifications can be classified in terms of the segment of users they are targeting.
+      </p>
+      <p>
+        Examples:
+      </p>
+      <code>
+        Takealot 🕹⚡️ GAMING FLASH SALE ⚡️🕹 Beat your high score with up to 40% OFF Gaming! Shop controllers, charging stations, headphones 
+        and more gaming must-haves! Don’t miss out! Stay home, stay safe, shop online! TAP HERE 📲
+      </code>
+      <p>
+        This notification is targeting users with a particular interest in video games or users that have previously purchased similar items
+        or need an incentive to purchase them.
+      </p>
+      <code>
+        Taking the first step It’s so rewarding! Let’s get started on your first exercise
+      </code>
+      <p>
+        This notification is targeting users based on a particular lifestyle, e.g. users interested in practicing or starting to practice sport regularly.
+      </p>
+      <center>
+        <img src="targetAudience.PNG" alt="Target Audience categories" width="700px">
+      </center>
+    </div>
+    <h3 id="x7-1-behavior">
+      <bdi class="secno">7.1 </bdi>Behavior
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x7-1-behavior"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Behavior</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Behavior">https://w3id.org/apn#Behavior</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Targeting users based on their behavior, purchase intent and interaction with certain online services or products.
+          </td>
+        </tr>
+        <tr><th>Superclass Of:</th> <td>
+          <a href="https://w3id.org/apn#Engagement">Engagement</a>, 
+          <a href="https://w3id.org/apn#Loyalty">Loyalty</a>, 
+          <a href="https://w3id.org/apn#Occasion">Occasion</a>, 
+          <a href="https://w3id.org/apn#Product">Product</a>,
+          <a href="https://w3id.org/apn#PurchasingReason">PurchasingReason</a>
+        </td></tr>
+      </tbody>
+    </table>
+    <h4 id="x7-1-1-engagement">
+      <bdi class="secno">7.1.1 </bdi>Engagement
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x7-1-1-engagement"></a>
+    </h4>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Engagement</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Engagement">https://w3id.org/apn#Engagement</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Targeting users based on their engagement with the app, e.g., they have liked a video, followed another user, started a game.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 id="x7-1-2-loyalty">
+      <bdi class="secno">7.1.2 </bdi>Loyalty
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x7-1-2-loyalty"></a>
+    </h4>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Loyalty</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Loyalty">https://w3id.org/apn#Loyalty</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Targeting a segment of users who are particularly loyal, e.g., daily recurrent users.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 id="x7-1-3-occasion">
+      <bdi class="secno">7.1.3 </bdi>Occasion
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x7-1-3-occasion"></a>
+    </h4>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Occasion</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Occasion">https://w3id.org/apn#Occasion</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Targeting users who have engaged with or expressed interest in rare events, e.g., previously purchased during a holiday.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 id="x7-1-4-product">
+      <bdi class="secno">7.1.4 </bdi>Product
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x7-1-4-product"></a>
+    </h4>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Product</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Product">https://w3id.org/apn#Product</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Targeting users who have engaged with or expressed interest in a specific product, e.g., you will love the new X product just launched.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 id="x7-1-5-purchasing-reason">
+      <bdi class="secno">7.1.5 </bdi>Purchasing Reason
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x7-1-5-purchasing-reason"></a>
+    </h4>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Purchasing Reason</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#PurchasingReason">https://w3id.org/apn#PurchasingReason</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Targeting users who have previously purchased or require a reason, incentive or nudge to purchase, 
+            e.g., you previously bought X, we recommend Y; 30% sale on now.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x7-2-demographic">
+      <bdi class="secno">7.2 </bdi>Demographic
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x7-2-demographic"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Demographic</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Demographic">https://w3id.org/apn#Demographic</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Targeting users based on quantifiable characteristics such as family status or job experience.
+          </td>
+        </tr>
+        <tr><th>Superclass Of:</th> <td>
+          <a href="https://w3id.org/apn#FamilyStatus">FamilyStatus</a>, 
+          <a href="https://w3id.org/apn#Health">Health</a>, 
+          <a href="https://w3id.org/apn#Job">Job</a>, 
+          <a href="https://w3id.org/apn#Residence">Residence</a>
+        </td></tr>
+      </tbody>
+    </table>
+    <h4 id="x7-2-1-family-status">
+      <bdi class="secno">7.2.1 </bdi>Family Status
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x7-2-1-family-status"></a>
+    </h4>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Family Status</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#FamilyStatus">https://w3id.org/apn#FamilyStatus</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Targeting users based on their family status, e.g., new parents, pregnancies.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 id="x7-2-2-health">
+      <bdi class="secno">7.2.2 </bdi>Health
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x7-2-2-health"></a>
+    </h4>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Health</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Health">https://w3id.org/apn#Health</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Targeting users based on their health status.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 id="x7-2-3-job">
+      <bdi class="secno">7.2.3 </bdi>Job
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x7-2-3-job"></a>
+    </h4>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Job</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Job">https://w3id.org/apn#Job</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Targeting users based on their job type / professional activities.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 id="x7-2-4-residence">
+      <bdi class="secno">7.2.4 </bdi>Residence
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x7-2-4-residence"></a>
+    </h4>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Residence</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Residence">https://w3id.org/apn#Residence</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Targeting users based on their type of residence, e.g., their house contains a garden.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x7-3-geographic">
+      <bdi class="secno">7.3 </bdi>Geographic
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x7-3-geographic"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Geographic</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Geographic">https://w3id.org/apn#Geographic</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Targeting users based on their geographic whereabouts.
+          </td>
+        </tr>
+        <tr><th>Superclass Of:</th> <td>
+          <a href="https://w3id.org/apn#Country">Country</a>, 
+          <a href="https://w3id.org/apn#Region">Region</a>
+        </td></tr>
+      </tbody>
+    </table>
+    <h4 id="x7-3-1-country">
+      <bdi class="secno">7.3.1 </bdi>Country
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x7-3-1-country"></a>
+    </h4>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Country</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Country">https://w3id.org/apn#Country</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Targeting users based on their country of residence.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 id="x7-3-2-region">
+      <bdi class="secno">7.3.2 </bdi>Region
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x7-3-2-region"></a>
+    </h4>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Region</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Region">https://w3id.org/apn#Region</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Targeting users based on their geographic region, i.e., a location within a country.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x7-4-psychographic">
+      <bdi class="secno">7.4 </bdi>Psychographic
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x7-4-psychographic"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Psychographic</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Psychographic">https://w3id.org/apn#Psychographic</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Targeting users based on their interests, personal motivations or lifestyle.
+          </td>
+        </tr>
+        <tr><th>Superclass Of:</th> <td>
+          <a href="https://w3id.org/apn#Interest">Interest</a>, 
+          <a href="https://w3id.org/apn#Lifestyle">Lifestyle</a>,
+          <a href="https://w3id.org/apn#Motivation">Motivation</a>
+        </td></tr>
+      </tbody>
+    </table>
+    <h4 id="x7-4-1-interest">
+      <bdi class="secno">7.4.1 </bdi>Interest
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x7-4-1-interest"></a>
+    </h4>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Interest</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Interest">https://w3id.org/apn#Interest</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Targeting users who have a particular interest, e.g., football goal updates indicates an interest in sports
+            and a new recipe an interest in cooking.
+          </td>
+        </tr>
+        <tr><th>Superclass Of:</th> <td>
+          <a href="https://w3id.org/apn#TA_AcademicInterests">TA_AcademicInterests</a>, 
+          <a href="https://w3id.org/apn#TA_Automotive">TA_Automotive</a>,
+          <a href="https://w3id.org/apn#TA_BooksAndLiterature">TA_BooksAndLiterature</a>,
+          <a href="https://w3id.org/apn#TA_Careers">TA_Careers</a>,
+          <a href="https://w3id.org/apn#TA_Education">TA_Education</a>,
+          <a href="https://w3id.org/apn#TA_FamilyAndRelationships">TA_FamilyAndRelationships</a>,
+          <a href="https://w3id.org/apn#TA_FineArt">TA_FineArt</a>,
+          <a href="https://w3id.org/apn#TA_HealthyLiving">TA_HealthyLiving</a>,
+          <a href="https://w3id.org/apn#TA_HobbiesAndInterests">TA_HobbiesAndInterests</a>,
+          <a href="https://w3id.org/apn#TA_MedicalHealth">TA_MedicalHealth</a>,
+          <a href="https://w3id.org/apn#TA_Movies">TA_Movies</a>,
+          <a href="https://w3id.org/apn#TA_MusicAndAudio">TA_MusicAndAudio</a>,
+          <a href="https://w3id.org/apn#TA_NewsAndPolitics">TA_NewsAndPolitics</a>,
+          <a href="https://w3id.org/apn#TA_PersonalFinance">TA_PersonalFinance</a>,
+          <a href="https://w3id.org/apn#TA_Pets">TA_Pets</a>,
+          <a href="https://w3id.org/apn#TA_PharmaceuticalsConditionsAndSymptoms">TA_PharmaceuticalsConditionsAndSymptoms</a>,
+          <a href="https://w3id.org/apn#TA_PopCulture">TA_PopCulture</a>,
+          <a href="https://w3id.org/apn#TA_RealEstate">TA_RealEstate</a>,
+          <a href="https://w3id.org/apn#TA_Shopping">TA_Shopping</a>,
+          <a href="https://w3id.org/apn#TA_Social">TA_Social</a>,
+          <a href="https://w3id.org/apn#TA_Sports">TA_Sports</a>,
+          <a href="https://w3id.org/apn#TA_StyleAndFashion">TA_StyleAndFashion</a>,
+          <a href="https://w3id.org/apn#TA_TechnologyAndComputing">TA_TechnologyAndComputing</a>,
+          <a href="https://w3id.org/apn#TA_Television">TA_Television</a>,
+          <a href="https://w3id.org/apn#TA_Travel">TA_Travel</a>,
+          <a href="https://w3id.org/apn#TA_VideoGaming">TA_VideoGaming</a>
+        </td></tr>
+      </tbody>
+    </table>
+    <h4 id="x7-4-2-lifestyle">
+      <bdi class="secno">7.4.2 </bdi>Lifestyle
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x7-4-2-lifestyle"></a>
+    </h4>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Lifestyle</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Lifestyle">https://w3id.org/apn#Lifestyle</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Targeting users based on their particular lifestyle, e.g., vegan products, a person who runs or works out.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 id="x7-4-3-motivation">
+      <bdi class="secno">7.4.3 </bdi>Motivation
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x7-4-3-motivation"></a>
+    </h4>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Motivation</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#Motivation">https://w3id.org/apn#Motivation</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Targeting users based on their aspirations or motivations, e.g., find a new job, get fitter, learn a new skill.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="x8-campaign">
+    <h2 id="x8-campaign">
+      <bdi class="secno">8. </bdi>Campaign Type categories
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x8-campaign"></a>
+    </h2>
+    <div>
+      <p>
+        Notifications can be classified in terms of its campaign type, i.e., a promotional campaign type can be used to increase 
+        the number of subscribers of a shopping app.
+      </p>
+      <p>
+        Examples:
+      </p>
+      <code>
+        Let's have a party on Monday! 🥳 Tap to join - the more, the merrier! 🤩📺
+      </code>
+      <p>
+        The notification above belongs to a campaign enticing users / customers to re-engage with the application.
+      </p>
+      <code>
+        Summer Sale Extended!! 🔥 Last Chance to Get Premium Bundle 25% OFF
+      </code>
+      <p>
+        The notification above belongs to a campaign related to flash sale promotional offers as it contains a time limit associated with it.
+      </p>
+      <p>
+        The defined campaign type subclasses are shown in the figure below.
+      </p>
+      <center>
+        <img src="marketingType.PNG" alt="Campaign Type categories" width="700px">
+      </center>
+    </div>
+    <h3 id="x8-1-awareness">
+      <bdi class="secno">8.1 </bdi>Awareness
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x8-1-awareness"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Awareness</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#CT_Awareness">https://w3id.org/apn#CT_Awareness</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            A campaign to promote general awareness of a topic.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x8-2-breaking">
+      <bdi class="secno">8.2 </bdi>Breaking Content
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x8-2-breaking"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Breaking Content</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#CT_BreakingContent">https://w3id.org/apn#CT_BreakingContent</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            A campaign to promote new content that has just been created.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x8-3-help">
+      <bdi class="secno">8.3 </bdi>Help & Feedback & Tips
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x8-3-help"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Help & Feedback & Tips</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#CT_HelpFeedbackTips">https://w3id.org/apn#CT_HelpFeedbackTips</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            A campaign to get help or tips and to provide feedback.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x8-4-loyalty">
+      <bdi class="secno">8.4 </bdi>Loyalty
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x8-4-loyalty"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Loyalty</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#CT_Loyalty">https://w3id.org/apn#CT_Loyalty</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            A campaign directed at loyal / returning / engaged users or customers.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x8-5-newsletter">
+      <bdi class="secno">8.5 </bdi>Newsletter
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x8-5-newsletter"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Newsletter</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#CT_Newsletter">https://w3id.org/apn#CT_Newsletter</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            Informative campaign containing "things of interest" to the user.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x8-6-onboarding">
+      <bdi class="secno">8.6 </bdi>Onboarding
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x8-6-onboarding"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Onboarding</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#CT_Onboarding">https://w3id.org/apn#CT_Onboarding</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            A campaign to induct users with a product/service, to acquaint them with features available or account management.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x8-7-product">
+      <bdi class="secno">8.7 </bdi>Product
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x8-7-product"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Product</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#CT_Product">https://w3id.org/apn#CT_Product</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            A campaign to promote a particular product/feature.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x8-8-promotional">
+      <bdi class="secno">8.8 </bdi>Promotional
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x8-8-promotional"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Promotional</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#CT_Promotional">https://w3id.org/apn#CT_Promotional</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            A campaign based on promotional offers for the users.
+          </td>
+        </tr>
+        <tr><th>Superclass Of:</th> <td>
+          <a href="https://w3id.org/apn#CT_PromotionalGeneral">CT_PromotionalGeneral</a>, 
+          <a href="https://w3id.org/apn#CT_PromotionalFlash">CT_PromotionalFlash</a>,
+          <a href="https://w3id.org/apn#CT_PromotionalRare">CT_PromotionalRare</a>
+        </td></tr>
+      </tbody>
+    </table>
+    <h4 id="x8-8-1-general">
+      <bdi class="secno">8.8.1 </bdi>General
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x8-8-1-general"></a>
+    </h4>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Promotional - General</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#CT_PromotionalGeneral">https://w3id.org/apn#CT_PromotionalGeneral</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            A campaign to promote general offers for the users.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 id="x8-8-2-flash">
+      <bdi class="secno">8.8.2 </bdi>Flash
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x8-8-2-flash"></a>
+    </h4>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Promotional - Flash</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#CT_PromotionalFlash">https://w3id.org/apn#CT_PromotionalFlash</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            A campaign to promote flash sale offers, i.e., they have some time limit associated.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h4 id="x8-8-3-rare">
+      <bdi class="secno">8.8.3 </bdi>Rare
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x8-8-3-rare"></a>
+    </h4>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Promotional - Rare</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#CT_PromotionalRare">https://w3id.org/apn#CT_PromotionalRare</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            A campaign to promote a service / product associated with particular seasons and / or holidays/events.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x8-9-reengagement">
+      <bdi class="secno">8.9 </bdi>Re-engagement
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x8-9-reengagement"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Re-engagement</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#CT_Reengagement">https://w3id.org/apn#CT_Reengagement</a></td></tr>
+        <tr><th>Definition:</th> 
+          <td>
+            A campaign enticing users / customers to re-engage with the service.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="x8-10-social">
+      <bdi class="secno">8.10 </bdi>Social
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x8-10-social"></a>
+    </h3>
+    <table class="def propdef">
+      <tbody><tr><th>Label:</th> <td>Social</td></tr>
+        <tr><th>IRI:</th> <td><a href="https://w3id.org/apn#CT_Social">https://w3id.org/apn#CT_Social</a></td></tr>
+        <tr><th>Description:</th> 
+          <td>
+            A campaign based on or associated with social tools, social media or influencers.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="x9-examples">
+    <h2 id="x9-examples">
+      <bdi class="secno">9. </bdi>Examples
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x9-examples"></a>
+    </h2>
+    <div>
+    </div>
+    <h3 id="x9-1-examples-cta">
+      <bdi class="secno">9.1 </bdi>Examples of Annotated CTAs
+      <a class="self-link respec-offending-element" aria-label="§" href="https://bcat65811.github.io/apn.html#styles" title="Broken local reference found in document." id="respec-offender-broken-local-reference-found-in-document"></a>
+      <a class="self-link" aria-label="§" href="https://bcat65811.github.io/apn.html#x9-1-examples-cta"></a>
+    </h3>
+    <div>
+      <p>
+        Example of Discover CTA notification:
+      </p>
+      <pre class="prettyprint">
+        :ex1 a apn:PushNotification ;
+            apn:hasCTA apn:Discover ;
+            apn:notificationID "1642770111733" ;
+            apn:notificationText "Your Daily Pick is ready! 🥰The elephant in the room is that daily life and trauma can be reasons our sexual feelings fall flat Today's selection takes a therapeutic approach to how to bring the glow back" ;
+            apn:pushedBy :app_Blinkist ;
+            apn:pushedOn "2022-01-21 13:01:52"^^xsd:datetime .
+      </pre>
+      <p>
+        Example of Purchase CTA notification:
+      </p>
+      <pre class="prettyprint">
+        :ex2 a apn:PushNotification ;
+            apn:hasCTA apn:Purchase ;
+            apn:notificationID "1642768061452" ;
+            apn:notificationText "TOP UP ON SPANISH SUN Save up to £310* on getaways to Spain" ;
+            apn:pushedBy :app_TUI ;
+            apn:pushedOn "2022-01-21 12:27:41"^^xsd:datetime .
+      </pre>
+      <p>
+        Example of Social CTA notification:
+      </p>
+      <pre class="prettyprint">
+        :ex3 a apn:PushNotification ;
+            apn:hasCTA apn:Social ;
+            apn:notificationID "1627563462874" ;
+            apn:notificationText "LinkedIn You have 4 messages and 6 notifications waiting for you on LinkedIn" ;
+            apn:pushedBy :app_LinkedIn ;
+            apn:pushedOn "2021-07-29 12:57:43"^^xsd:datetime .
+      </pre>
+      <p>
+        Example of Reminder CTA notification:
+      </p>
+      <pre class="prettyprint">
+        :ex4 a apn:PushNotification ;
+            apn:hasCTA apn:Reminder ;
+            apn:notificationID "1641515153599" ;
+            apn:notificationText "Light and houseplants 🪴 Check your natural light to see if houseplants have enough ☀️" ;
+            apn:pushedBy :app_Blossom ;
+            apn:pushedOn "2022-01-07 00:25:54"^^xsd:datetime .
+      </pre>
+    </div>
+  </section>
+
+<section id="references" class="appendix"><!--OddPage--><h2 id="a-references"><bdi class="secno">A.<!---0.910070%--> </bdi>References<!---0.910070%--><a class="self-link" aria-label="§" href=""></a></h2><section id="informative-references">
+  <h3 id="a-1-informative-references"><bdi class="secno">A.1<!---0.910070%--> </bdi>Informative references<!---0.910070%--><a class="self-link" aria-label="§" href=""></a></h3>
+  <dl class="bibliography">
+    <dt id="bib-apn">[apn]</dt>
+    <dd>
+      <a href="https://w3id.org/apn/">
+        <cite>Ontology for the Annotation of Push-Notifications</cite>
+      </a>. 2022. URL: 
+      <a href="https://w3id.org/apn/">
+        https://w3id.org/apn/
+      </a>
+    </dd>
+    <dt id="bib-dpv">[dpv]</dt>
+    <dd>
+      <a href="http://www.w3.org/ns/dpv#">
+        <cite>Data Privacy Vocabulary (DPV) version 0.2</cite>
+      </a>. Axel Polleres; Beatriz Esteves; Bert Bos; Bud Bruegger; Elmar Kiesling; Eva Schlehahn; Fajar J. Ekaputra; Georg P. Krog; Harshvardhan J. Pandit; Javier D. Fernández; Mark Lizar; Paul Ryan; Piero Bonatti; Ramisa Gachpaz Hamed; Rigo Wenning; Rob Brennan; Simon Steyskal. 21 June 2021. URL: 
+      <a href="http://www.w3.org/ns/dpv#">
+        http://www.w3.org/ns/dpv#
+      </a>
+    </dd>
+    <dt id="bib-dc">[dc]</dt>
+    <dd>
+      <a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/">
+        <cite>DCMI Metadata Terms</cite>
+      </a>. DCMI Usage Board.  DCMI. 20 January 2020. DCMI Recommendation. URL: 
+      <a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/">
+        https://www.dublincore.org/specifications/dublin-core/dcmi-terms/
+      </a>
+    </dd>
+    <dt id="bib-owl2-overview">[owl2-overview]</dt>
+    <dd>
+      <a href="https://www.w3.org/TR/owl2-overview/">
+        <cite>OWL 2 Web Ontology Language Document Overview (Second Edition)</cite>
+      </a>. W3C OWL Working Group.  W3C. 11 December 2012. W3C Recommendation. URL: 
+      <a href="https://www.w3.org/TR/owl2-overview/">
+        https://www.w3.org/TR/owl2-overview/
+      </a>
+    </dd>
+    <dt id="bib-rdf11-concepts">[rdf11-concepts]</dt>
+    <dd>
+      <a href="https://www.w3.org/TR/rdf11-concepts/">
+        <cite>RDF 1.1 Concepts and Abstract Syntax</cite>
+      </a>. Richard Cyganiak; David Wood; Markus Lanthaler.  W3C. 25 February 2014. W3C Recommendation. URL: 
+      <a href="https://www.w3.org/TR/rdf11-concepts/">
+        https://www.w3.org/TR/rdf11-concepts/
+      </a>
+    </dd>
+    <dt id="bib-rdf-schema">[rdf-schema]</dt>
+    <dd>
+      <a href="https://www.w3.org/TR/rdf-schema/">
+        <cite>RDF Schema 1.1</cite>
+      </a>. Dan Brickley; Ramanathan Guha.  W3C. 25 February 2014. W3C Recommendation. URL: 
+      <a href="https://www.w3.org/TR/rdf-schema/">
+        https://www.w3.org/TR/rdf-schema/
+      </a>
+    </dd>
+    <dt id="bib-skos">[skos]</dt>
+    <dd>
+      <a href="https://www.w3.org/TR/skos-reference/">
+        <cite>SKOS Simple Knowledge Organization System Reference</cite>
+      </a>. Alistair Miles; Sean Bechhofer. W3C. 18 August 2009. W3C Recommendation. URL: 
+      <a href="https://www.w3.org/TR/skos-reference/">
+        https://www.w3.org/TR/skos-reference/
+      </a>
+    </dd>
+    <dt id="bib-vann">[vann]</dt>
+    <dd>
+      <a href="http://purl.org/vocab/vann/">
+        <cite>VANN: A vocabulary for annotating vocabulary descriptions</cite>
+      </a>. Ian Davis. 1 April 2005. URL: 
+      <a href="http://purl.org/vocab/vann/">
+        http://purl.org/vocab/vann/
+      </a>
+    </dd>
+    <dt id="bib-xsd">[xsd]</dt>
+    <dd>
+      <a href="https://www.w3.org/TR/xmlschema11-2/">
+        <cite>W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes</cite>
+      </a>. David Peterson; Sandy Gao; Ashok Malhotra; Michael Sperberg-McQueen; Henry Thompson; Paul V. Biron et al.  W3C. 5 April 2012. W3C Recommendation. URL: 
+      <a href="https://www.w3.org/TR/xmlschema11-2/">
+        https://www.w3.org/TR/xmlschema11-2/
+      </a>
+    </dd>
+  </dl>
+</section></section><p role="navigation" id="back-to-top">
+  <a href=""><abbr title="Back to Top">↑</abbr></a>
+</p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+document.respec.ready.then(setupPanel);
+} else {
+setupPanel();
+}
+
+function setupPanel() {
+const listener = panelListener();
+document.body.addEventListener("keydown", listener);
+document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+/** @type {HTMLElement} */
+let panel = null;
+return event => {
+  const { target, type } = event;
+
+  if (!(target instanceof HTMLElement)) return;
+
+  // For keys, we only care about Enter key to activate the panel
+  // otherwise it's activated via a click.
+  if (type === "keydown" && event.key !== "Enter") return;
+
+  const action = deriveAction(event);
+
+  switch (action) {
+    case "show": {
+      hidePanel(panel);
+      /** @type {HTMLElement} */
+      const dfn = target.closest("dfn, .index-term");
+      panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+      const coords = deriveCoordinates(event);
+      displayPanel(dfn, panel, coords);
+      break;
+    }
+    case "dock": {
+      panel.style.left = null;
+      panel.style.top = null;
+      panel.classList.add("docked");
+      break;
+    }
+    case "hide": {
+      hidePanel(panel);
+      panel = null;
+      break;
+    }
+  }
+};
+}
+
+/**
+* @param {MouseEvent|KeyboardEvent} event
+*/
+function deriveCoordinates(event) {
+const target = /** @type HTMLElement */ (event.target);
+
+// We prevent synthetic AT clicks from putting
+// the dialog in a weird place. The AT events sometimes
+// lack coordinates, so they have clientX/Y = 0
+const rect = target.getBoundingClientRect();
+if (
+  event instanceof MouseEvent &&
+  event.clientX >= rect.left &&
+  event.clientY >= rect.top
+) {
+  // The event probably happened inside the bounding rect...
+  return { x: event.clientX, y: event.clientY };
+}
+
+// Offset to the middle of the element
+const x = rect.x + rect.width / 2;
+// Placed at the bottom of the element
+const y = rect.y + rect.height;
+return { x, y };
+}
+
+/**
+* @param {Event} event
+*/
+function deriveAction(event) {
+const target = /** @type {HTMLElement} */ (event.target);
+const hitALink = !!target.closest("a");
+if (target.closest("dfn:not([data-cite]), .index-term")) {
+  return hitALink ? "none" : "show";
+}
+if (target.closest(".dfn-panel")) {
+  if (hitALink) {
+    return target.classList.contains("self-link") ? "hide" : "dock";
+  }
+  const panel = target.closest(".dfn-panel");
+  return panel.classList.contains("docked") ? "hide" : "none";
+}
+if (document.querySelector(".dfn-panel:not([hidden])")) {
+  return "hide";
+}
+return "none";
+}
+
+/**
+* @param {HTMLElement} dfn
+* @param {HTMLElement} panel
+* @param {{ x: number, y: number }} clickPosition
+*/
+function displayPanel(dfn, panel, { x, y }) {
+panel.hidden = false;
+// distance (px) between edge of panel and the pointing triangle (caret)
+const MARGIN = 20;
+
+const dfnRects = dfn.getClientRects();
+// Find the `top` offset when the `dfn` can be spread across multiple lines
+let closestTop = 0;
+let minDiff = Infinity;
+for (const rect of dfnRects) {
+  const { top, bottom } = rect;
+  const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+  if (diffFromClickY < minDiff) {
+    minDiff = diffFromClickY;
+    closestTop = top;
+  }
+}
+
+const top = window.scrollY + closestTop + dfnRects[0].height;
+const left = x - MARGIN;
+panel.style.left = `${left}px`;
+panel.style.top = `${top}px`;
+
+// Find if the panel is flowing out of the window
+const panelRect = panel.getBoundingClientRect();
+const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+if (panelRect.right > SCREEN_WIDTH) {
+  const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+  const newCaretOffset = left - newLeft;
+  panel.style.left = `${newLeft}px`;
+  /** @type {HTMLElement} */
+  const caret = panel.querySelector(".caret");
+  caret.style.left = `${newCaretOffset}px`;
+}
+
+// As it's a dialog, we trap focus.
+// TODO: when <dialog> becomes a implemented, we should really
+// use that.
+trapFocus(panel, dfn);
+}
+
+/**
+* @param {HTMLElement} panel
+* @param {HTMLElement} dfn
+* @returns
+*/
+function trapFocus(panel, dfn) {
+/** @type NodeListOf<HTMLAnchorElement> elements */
+const anchors = panel.querySelectorAll("a[href]");
+// No need to trap focus
+if (!anchors.length) return;
+
+// Move focus to first anchor element
+const first = anchors.item(0);
+first.focus();
+
+const trapListener = createTrapListener(anchors, panel, dfn);
+panel.addEventListener("keydown", trapListener);
+
+// Hiding the panel releases the trap
+const mo = new MutationObserver(records => {
+  const [record] = records;
+  const target = /** @type HTMLElement */ (record.target);
+  if (target.hidden) {
+    panel.removeEventListener("keydown", trapListener);
+    mo.disconnect();
+  }
+});
+mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+*
+* @param {NodeListOf<HTMLAnchorElement>} anchors
+* @param {HTMLElement} panel
+* @param {HTMLElement} dfn
+* @returns
+*/
+function createTrapListener(anchors, panel, dfn) {
+const lastIndex = anchors.length - 1;
+let currentIndex = 0;
+return event => {
+  switch (event.key) {
+    // Hitting "Tab" traps us in a nice loop around elements.
+    case "Tab": {
+      event.preventDefault();
+      currentIndex += event.shiftKey ? -1 : +1;
+      if (currentIndex < 0) {
+        currentIndex = lastIndex;
+      } else if (currentIndex > lastIndex) {
+        currentIndex = 0;
+      }
+      anchors.item(currentIndex).focus();
+      break;
+    }
+
+    // Hitting "Enter" on an anchor releases the trap.
+    case "Enter":
+      hidePanel(panel);
+      break;
+
+    // Hitting "Escape" returns focus to dfn.
+    case "Escape":
+      hidePanel(panel);
+      dfn.focus();
+      return;
+  }
+};
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+if (!panel) return;
+panel.hidden = true;
+panel.classList.remove("docked");
+}
+})()</script><script src="./apn_files/fixup.js.transferir"></script></body></html>
